@@ -17,12 +17,11 @@ Explanation: The input binary string 11111111111111111111111111111101 represents
 class Solution {
 public:
     uint32_t reverseBits(uint32_t n) {
-        uint32_t result = 0;
-        for(int i=0;i<32;i++){
-            result<<=1;
-            if(n&1)
-                result++;
-            n>>=1;
+        uint32_t result = 0, power = 31;
+        while (n != 0) {
+            result += (n & 1) << power;
+            n = n >> 1;
+            power -= 1;
         }
         return result;
     }
